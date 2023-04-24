@@ -14,10 +14,15 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+    - name: Setup Python environment
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        activate-environment: ml-pipeline
+        environment-file: environment.yml
     - name: Collect data
-      run: 
-      pip install -r requirements.txt
-      python api.py
+      run: |
+        pip install -r requirements.txt
+        python api.py
     - name: Process data
       run: python process_data.py
     - name: Train model
