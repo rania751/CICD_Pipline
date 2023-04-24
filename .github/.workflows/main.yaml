@@ -1,0 +1,28 @@
+name: ML Pipeline
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  process_data:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Collect data
+      run: 
+      pip install -r requirements.txt
+      python api.py
+    - name: Process data
+      run: python process_data.py
+    - name: Train model
+      run: python train_model.py
+    # - name: Evaluate model
+    #   run: python evaluate_model.py
+    # - name: Deploy app
+    #   run: python deploy.py

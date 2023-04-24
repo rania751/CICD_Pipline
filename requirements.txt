@@ -1,0 +1,11 @@
+Flask
+sklearn
+pandas
+seaborn
+pickle
+tensorflow
+requests
+numpy
+urllib3
+matplotlib
+gunicorn
